@@ -1,3 +1,6 @@
+
+
+
 /**
  * The index.js file is used to re-export from our separate files, that way rather than write:
  * 
@@ -11,3 +14,10 @@
  * 
  * Re-export Feature, Loading, Preview, Search, and Title from their respective files
  */
+
+// export {default as Feature} from './Feature'
+// export {default as Preview} from './Preview'
+export {default as Search} from './Search'
+// export {default as Title} from './Title'
+// export {default as Loading} from './Loading'
+
