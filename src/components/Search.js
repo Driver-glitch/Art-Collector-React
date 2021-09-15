@@ -50,7 +50,7 @@ const Search = ({setIsLoading, setSearchResults}) => {
   useEffect(() => {
     try {
 
-      Promise.all([fetchAllCenturies, fetchAllClassifications])
+      Promise.all([fetchAllCenturies () , fetchAllClassifications ()])
 
       .then(([ centuries, classifications ]) => {
               setCenturyList(centuries)
@@ -112,7 +112,7 @@ const Search = ({setIsLoading, setSearchResults}) => {
         onChange={(event)=>setClassification(event.target.value)}>
         <option value="any">Any</option>
         {
-        // LOOK HERE THIS IS WHERE I LEFT OFF AT
+       
         classificationList.map((classification, index) => {
           return <option key = {index+ "classification"} value = {classification.name}> {classification.name}  </option>
         })
@@ -130,7 +130,7 @@ const Search = ({setIsLoading, setSearchResults}) => {
         {
       
         //map over the centuryList, return an <option />
-          centuryList.map(( century, index) => {
+          centuryList.map(( century, index ) => {
             return <option key = {index+ "century"} value = {century.name}> {century.name} </option>
           })
         }
