@@ -11,7 +11,9 @@ import {
 
 const Search = ({setIsLoading, setSearchResults}) => {
 
-  const {setIsLoading, setSearchResults} = props
+  // const {setIsLoading, setSearchResults} = props
+  // const setIsLoading = props.setIsLoading
+  // const setSearchResults = props.setSearchResults
 
   const [centuryList, setCenturyList] = useState([])
    const [century, setCentury] = useState('any')
@@ -107,12 +109,12 @@ const Search = ({setIsLoading, setSearchResults}) => {
         name="classification"
         id="select-classification"
         value={classification} 
-        onChange={setClassification}>
+        onChange={(event)=>setClassification(event.target.value)}>
         <option value="any">Any</option>
         {
         // LOOK HERE THIS IS WHERE I LEFT OFF AT
-        classificationList.map((classification) => {
-          return <option />
+        classificationList.map((classification, index) => {
+          return <option key = {index+ "classification"} value = {classification.name}> {classification.name}  </option>
         })
       }
         </select>
@@ -123,12 +125,13 @@ const Search = ({setIsLoading, setSearchResults}) => {
         name="century" 
         id="select-century"
         value={century} 
-        onChange={setCentury}>
+        onChange={(event)=>setCentury(event.target.value)}>
         <option value="any">Any</option>
         {
-        // LOOK HERE THIS IS WHERE I LEFT OFF AT
-          centuryList.map((century) => {
-            return <option />
+      
+        //map over the centuryList, return an <option />
+          centuryList.map(( century, index) => {
+            return <option key = {index+ "century"} value = {century.name}> {century.name} </option>
           })
         }
       
@@ -139,3 +142,4 @@ const Search = ({setIsLoading, setSearchResults}) => {
 }
 
 export default Search;
+
