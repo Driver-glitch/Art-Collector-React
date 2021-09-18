@@ -21,10 +21,6 @@ const Search = ({setIsLoading, setSearchResults}) => {
     const [queryString, setQueryString] = useState('')
     const [classification, setClassification] = useState('any')
   
-  
-
-
-
   // Make sure to destructure setIsLoading and setSearchResults from the props
 
 
@@ -87,7 +83,7 @@ const Search = ({setIsLoading, setSearchResults}) => {
     event.preventDefault()
     setIsLoading(true)
     try {
-      setSearchResults(fetchQueryResults({century, classification, queryString}))
+      setSearchResults( await fetchQueryResults({century, classification, queryString}))
     } catch (error) {
       console.log(error)
     }finally {
@@ -101,7 +97,7 @@ const Search = ({setIsLoading, setSearchResults}) => {
         type="text" 
         placeholder="enter keywords..." 
         value={queryString} 
-        onChange={setQueryString}/>
+        onChange={(event) =>setQueryString(event.target.value)}/>
     </fieldset>
     <fieldset>
       <label htmlFor="select-classification">Classification <span className="classification-count">({ classificationList.length })</span></label>
